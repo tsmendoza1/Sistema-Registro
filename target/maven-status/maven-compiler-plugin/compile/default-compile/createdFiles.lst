@@ -4,6 +4,7 @@ ec\edu\tsmendoza\sistemaregistro\presentacion\Producto_frm$4.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Persona_frm$2.class
 modelo\DetalleFactura.class
 ec\edu\tsmendoza\sistemaregistro\negocio\ProductoServicio.class
+ec\edu\tsmendoza\sistemaregistro\presentacion\Factura_frm$9.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\SistemaRegistro$2.class
 modelo\Factura.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Persona_frm$8.class
