@@ -331,7 +331,7 @@ public class Producto_frm extends javax.swing.JInternalFrame {
 
         Double precio = 0.0;
         try {
-            precio = Double.parseDouble(precioStr); // Intentar convertir el precio a Double
+            precio = Double.parseDouble(precioStr);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "El precio debe ser un número válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return; // Salir si el formato no es válido

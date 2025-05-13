@@ -16,7 +16,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name= "usuario")
-public class Persona {
+public abstract class Persona {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

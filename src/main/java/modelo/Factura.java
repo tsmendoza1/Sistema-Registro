@@ -38,7 +38,7 @@ public class Factura {
         this.persona = persona;
         this.detalles = detalles;
         for(DetalleFactura d: detalles){
-            //d.setFactura(this);
+            d.setFactura(this);
         }
     }
 

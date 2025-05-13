@@ -34,9 +34,11 @@ public class SistemaRegistro extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         butt_crearFactura = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,7 +46,7 @@ public class SistemaRegistro extends javax.swing.JFrame {
         fileMenu.setText("Sistema Registro");
 
         openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Persona");
+        openMenuItem.setText("Cliente");
         openMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 openMenuItemActionPerformed(evt);
@@ -60,6 +62,14 @@ public class SistemaRegistro extends javax.swing.JFrame {
             }
         });
         fileMenu.add(saveMenuItem);
+
+        jMenuItem3.setText("Empleado");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem3);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -81,6 +91,14 @@ public class SistemaRegistro extends javax.swing.JFrame {
             }
         });
         butt_crearFactura.add(jMenuItem1);
+
+        jMenuItem2.setText("Facturas Creadas");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        butt_crearFactura.add(jMenuItem2);
 
         menuBar.add(butt_crearFactura);
 
@@ -121,6 +139,18 @@ public class SistemaRegistro extends javax.swing.JFrame {
         desktopPane.add(obj);
         obj.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Facturas_frm obj = new Facturas_frm();
+        desktopPane.add(obj);
+        obj.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        Empleado_frm obj = new Empleado_frm();
+        desktopPane.add(obj);
+        obj.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +193,8 @@ public class SistemaRegistro extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveMenuItem;

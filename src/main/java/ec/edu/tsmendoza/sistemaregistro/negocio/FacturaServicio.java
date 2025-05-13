@@ -5,6 +5,7 @@
 package ec.edu.tsmendoza.sistemaregistro.negocio;
 
 import ec.edu.tsmendoza.sistemaregistro.datos.*;
+import java.util.List;
 import modelo.*;
 /**
  *
@@ -52,6 +53,10 @@ public class FacturaServicio {
     
     public void RegistrarNuevaFactura(Factura nuevaFactura){
         this.facturaDao.RegistrarFactura(nuevaFactura);
+    }
+    
+    public List<Factura> obtenerFacturasConDetalles() {
+        return facturaDao.obtenerTodasConDetalles();
     }
     
 }

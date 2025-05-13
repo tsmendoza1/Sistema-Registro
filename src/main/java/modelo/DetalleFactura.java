@@ -54,8 +54,15 @@ public class DetalleFactura {
         this.precioUnitario = precioUnitario;
         this.producto = producto;
     }
-    
 
+    public DetalleFactura(int id, int cantidad, double precioUnitario, Producto producto, Factura factura) {
+        this.id = id;
+        this.cantidad = cantidad;
+        this.precioUnitario = precioUnitario;
+        this.producto = producto;
+        this.factura = factura;
+    }
+    
     public int getId() {
         return id;
     }

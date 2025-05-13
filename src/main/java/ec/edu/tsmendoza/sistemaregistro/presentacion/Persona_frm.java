@@ -11,11 +11,14 @@ import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
+import modelo.Cliente;
+import modelo.Fidelidad;
 import modelo.Persona;
 
 /**
@@ -31,6 +34,7 @@ public class Persona_frm extends javax.swing.JInternalFrame {
     private SimpleDateFormat formato;
     public static DefaultTableModel modelo;
     private List<Persona> listadoPersonas;
+    private Cliente nuevaPersona;
 
     public Persona_frm() {
         initComponents();
@@ -38,7 +42,9 @@ public class Persona_frm extends javax.swing.JInternalFrame {
         this.formato = new SimpleDateFormat("dd-MM-yyyy");
         List<Persona> lista = servicio.ObtenerPersona();
         mostrarDatos(lista);
+        LimpiarFormulario();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -68,6 +74,9 @@ public class Persona_frm extends javax.swing.JInternalFrame {
         butt_actualizar = new javax.swing.JButton();
         txt_fecha = new javax.swing.JTextField();
         butt_limpiar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txt_direccion = new javax.swing.JTextField();
+        checkB_afiliarse = new javax.swing.JCheckBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -190,6 +199,15 @@ public class Persona_frm extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel7.setText("Direccion:");
+
+        checkB_afiliarse.setText("Desea Afiliarse");
+        checkB_afiliarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkB_afiliarseActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,13 +236,17 @@ public class Persona_frm extends javax.swing.JInternalFrame {
                                             .addComponent(txt_apellido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel5))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txt_nombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                    .addComponent(txt_fecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                    .addComponent(txt_direccion, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(checkB_afiliarse)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
+                        .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(butt_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -233,15 +255,15 @@ public class Persona_frm extends javax.swing.JInternalFrame {
                                 .addComponent(butt_limpiar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(butt_eliminar)))))
-                .addGap(42, 42, 42)
+                .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
                 .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -266,7 +288,13 @@ public class Persona_frm extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(txt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(checkB_afiliarse)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(butt_agregar)
                             .addComponent(butt_eliminar)
@@ -274,7 +302,7 @@ public class Persona_frm extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(butt_actualizar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         pack();
@@ -334,59 +362,14 @@ public class Persona_frm extends javax.swing.JInternalFrame {
     private void butt_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butt_agregarActionPerformed
 
         long startTime = System.currentTimeMillis();
-        AgregarPersona();
+        RegistrarNuevaPersona();
         long endTime = System.currentTimeMillis();
         System.out.println("Tiempo de respuesta al agregar persona: " + (endTime - startTime) + " ms");
         
     }//GEN-LAST:event_butt_agregarActionPerformed
 
     private void butt_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butt_actualizarActionPerformed
-        // Se obtiene el id seleccionado de la tabla
-        int filaSeleccionada = tbl_usuario.getSelectedRow();
-        // Se valdia que la fila seleccionada sea superior a cero 
-        if (filaSeleccionada >= 0) {
-
-            // Si el formulario esta lleno proceder a enviarlo a la capa de negocio
-            if (ValidarFormulario()) {
-                String nombre = txt_nombre.getText();
-                String apellido = txt_apellido.getText();
-                String cedula = txt_cedula.getText();
-                String correo = txt_correo.getText();
-                String telefono = txt_telefono.getText();
-
-                // 26-09-1994
-                String fecha = txt_fecha.getText();
-                String[] fechaSeparada = fecha.split("-");
-
-                int dia = Integer.parseInt(fechaSeparada[0]);
-                int mes = Integer.parseInt(fechaSeparada[1]);
-                int anio = Integer.parseInt(fechaSeparada[2]);
-                LocalDate fechaNacimiento = LocalDate.of(anio, mes, dia);
-
-                //String nombre, String apellido, String correo, String telefono, LocalDate fecha_nacimiento, String cedula
-                Persona actualizarPersona = new Persona(nombre, apellido, correo,
-                        telefono, fechaNacimiento, cedula);
-
-                int idPersona = listadoPersonas.get(filaSeleccionada).getId();
-
-                boolean actualizado = servicio.ActualizarPersona(idPersona, actualizarPersona);
-
-                if (actualizado) {
-                    JOptionPane.showMessageDialog(null,
-                            "Registro actualizado.",
-                            "Información",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    List<Persona> lista = servicio.ObtenerPersona();
-                    mostrarDatos(lista);
-                    LimpiarFormulario();
-                } else {
-                    JOptionPane.showMessageDialog(null,
-                            "No se pudo actualizar el registro.",
-                            "Advertencia",
-                            JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        }
+        ActualizarDatosPersona();
     }//GEN-LAST:event_butt_actualizarActionPerformed
 
     private void butt_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butt_eliminarActionPerformed
@@ -491,6 +474,10 @@ public class Persona_frm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_fechaActionPerformed
 
+    private void checkB_afiliarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkB_afiliarseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkB_afiliarseActionPerformed
+
     public boolean ValidarFormulario() {
         Border bordeRojo = BorderFactory.createLineBorder(Color.RED, 2);
         Border bordeNegro = BorderFactory.createLineBorder(Color.BLACK, 2);
@@ -508,15 +495,91 @@ public class Persona_frm extends javax.swing.JInternalFrame {
                 || txt_telefono.getText().trim().isEmpty()
                 || txt_fecha.getText().trim().isEmpty());
     }
+    
+    private void RegistrarNuevaPersona() {
+        // Si el formulario esta lleno proceder a enviarlo a la capa de negocio
+        if(ValidarFormulario()){           
+            Cliente nuevaPersona = GenerarDatosPersona();
+            // Se valida si la persona no sea nula, si es asi acaba el metodo
+            if(nuevaPersona == null) return;
+            // Esta marcado el boton de afiliacion
+            if(this.checkB_afiliarse.isSelected()){
+                // Cliente cliente, int puntosAcumulados, int puntosCanjeados,
+                // LocalDate fechaAfiliacion, LocalDate ultimaActualizacion
+                Fidelidad fidelidad = new Fidelidad(nuevaPersona, 0, 0, LocalDate.now());
+                nuevaPersona.setFidelidad(fidelidad);
+            }
+            // [0] ya existe la persomna  [1] registro de persona exitoso
+            // [2] Error interno [3] la persona es menor de edad
+            int registro = servicio.AgregarNuevsPersona(nuevaPersona);
+            switch (registro) {
+                case 0:
+                    MostrarMensajePanel("Ya existe la persona con ese número de cédula.",
+                            "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    break;
+                    
+                case 1:
+                    MostrarMensajePanel("Registro exitoso.",
+                            "Información", JOptionPane.INFORMATION_MESSAGE);
+                    // Se actualiza la tabla de registro y limpiar el formulario
+                    mostrarDatos(listadoPersonas);
+                    LimpiarFormulario();
+                    break;
+                    
+                case 2:
+                    MostrarMensajePanel("Error interno, intentelo más tarde.",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
+                    
+                case 3:
+                    MostrarMensajePanel("El sistema solo permite registrar a mayores de edad.",
+                            "Advertencia", JOptionPane.QUESTION_MESSAGE);
+                    break;
+            }
+        }else{
+            MostrarMensajePanel("Debe completar todos los campos obligatorios.",
+                    "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 
+    private void ActualizarDatosPersona(){
+        // Se obtiene el id seleccionado de la tabla
+        int filaSeleccionada = this.tbl_usuario.getSelectedRow();
+            // Se valdia que la fila seleccionada sea superior a cero
+            
+            if (filaSeleccionada >= 0) {
+                // Si el formulario esta lleno proceder a enviarlo a la capa de negocio
+                if(ValidarFormulario()) {
+                    Cliente actualizarPersona = GenerarDatosPersona();
+                    // Se valida si la persona no sea nula, si es asi acaba el metodo
+                    if(actualizarPersona == null) return;
+                    // Se obtiene el id de la persona
+                    int idPersona = this.listadoPersonas.get(filaSeleccionada).getId();
+                    boolean actualizado = this.servicio.ActualizarPersona(idPersona, actualizarPersona);
+                
+                    // Se verifica si la persona se a actualizado correctamente
+                    if(actualizado){
+                        MostrarMensajePanel("Registro actualizado.",
+                                "Información", JOptionPane.INFORMATION_MESSAGE);
+                        mostrarDatos(listadoPersonas);
+                        LimpiarFormulario();
+                    }else{
+                        MostrarMensajePanel("No se pudo actualizar el registro.",
+                            "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
+    }
+    
     private void AgregarPersona() {
         try {
-            if (ValidarFormulario()) {
+                if(!checkB_afiliarse.isSelected()){
                 String nombre = txt_nombre.getText();
                 String apellido = txt_apellido.getText();
                 String cedula = txt_cedula.getText();
                 String correo = txt_correo.getText();
                 String telefono = txt_telefono.getText();
+                String direccion = txt_direccion.getText();
 
                 // 26-09-1994
                 String fecha = txt_fecha.getText();
@@ -528,8 +591,9 @@ public class Persona_frm extends javax.swing.JInternalFrame {
                 LocalDate fechaNacimiento = LocalDate.of(anio, mes, dia);
 
                 //String nombre, String apellido, String correo, String telefono, LocalDate fecha_nacimiento, String cedula
-                Persona nuevaPersona = new Persona(nombre, apellido, correo,
-                        telefono, fechaNacimiento, cedula);
+//                 nuevaPersona = new Cliente( nombre, apellido, correo,
+//                        telefono, fechaNacimiento, cedula);
+//                 
 
                 // [0] ya existe la persomna  [1] registro de persona exitoso
                 // [2] Error interno [3] la persona es menor de edad
@@ -584,24 +648,64 @@ public class Persona_frm extends javax.swing.JInternalFrame {
         }
     }
 
+     private Cliente GenerarDatosPersona(){
+        Cliente nuevaPersona = null;
+        String nombre = this.txt_nombre.getText();
+        String apellido = this.txt_apellido.getText();
+        String numId = this.txt_cedula.getText();
+        String correo = this.txt_correo.getText();
+        String fechaNac = this.txt_fecha.getText();
+        String direccion = this.txt_direccion.getText();
+        String telefono = this.txt_telefono.getText();
+        // Se genera un bloque try para que la fecha sea correcta
+        try {
+            String[] fechaSeparada = fechaNac.split("-");
+            int dia = Integer.parseInt(fechaSeparada[0]);
+            int mes = Integer.parseInt(fechaSeparada[1]);
+            int anio = Integer.parseInt(fechaSeparada[2]);
+            LocalDate fechaNacimiento = LocalDate.of(anio, mes, dia);
+            
+            if(checkB_afiliarse.isSelected()){
+                //String nombre, String apellido, String correo, String telefono, LocalDate fecha_nacimiento, String cedula
+            nuevaPersona = new Cliente(direccion, nombre, apellido, correo, telefono,
+                    fechaNacimiento, numId);
+            }else{
+                nuevaPersona = new Cliente(nombre, apellido, correo, telefono,
+                    fechaNacimiento, numId);
+            }
+            
+        }catch(DateTimeParseException ex){
+            MostrarMensajePanel(ex.getMessage(),
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        return nuevaPersona;
+    }
+     
+    private void MostrarMensajePanel(String msm, String cabezera,  int tipoPanel) {
+        JOptionPane.showMessageDialog(null, msm, cabezera, tipoPanel);
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butt_actualizar;
     private javax.swing.JButton butt_agregar;
     private javax.swing.JButton butt_eliminar;
     private javax.swing.JButton butt_limpiar;
+    private javax.swing.JCheckBox checkB_afiliarse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JTable tbl_usuario;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_cedula;
     private javax.swing.JTextField txt_correo;
+    private javax.swing.JTextField txt_direccion;
     private javax.swing.JTextField txt_fecha;
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import modelo.Empleado;
 import util.persistenceUtil;
 
 /**
@@ -116,7 +117,7 @@ public class PersonaDAO {
 
         try {
             em.getTransaction().begin();
-            personas = em.createQuery("SELECT p FROM Persona p", Persona.class).getResultList();
+            personas = em.createQuery("SELECT c FROM Cliente c", Persona.class).getResultList();
             em.getTransaction().commit();
         } catch (Exception ex) {
             em.getTransaction().rollback();
@@ -127,13 +128,15 @@ public class PersonaDAO {
 
         return personas;
     }
-    
+
     // Metodo que permite actulizar la persona
     public boolean ActualizarPersona(int id, Persona personaActualizar) {
         EntityManager em = persistenceUtil.getEntityManagerFactory().createEntityManager();
         try {
             Persona existente = em.find(Persona.class, id);
-            if (existente == null) return false;
+            if (existente == null) {
+                return false;
+            }
 
             em.getTransaction().begin();
             existente.setNombre(personaActualizar.getNombre());
@@ -147,21 +150,22 @@ public class PersonaDAO {
             return true;
 
         } catch (Exception ex) {
-            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             return false;
         } finally {
             em.close();
         }
     }
-    
-    
+
     // Eliminar persona
     // Si retorna true se elimino el registro, false no se pudo eliminar
     public boolean EliminarPersona(int numId) {
         EntityManager em = persistenceUtil.getEntityManagerFactory().createEntityManager();
         try {
             Persona persona = em.find(Persona.class, numId);
-            
+
             if (persona == null) {
                 return false;
             }
@@ -172,27 +176,29 @@ public class PersonaDAO {
             return true;
 
         } catch (Exception ex) {
-            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             return false;
         } finally {
             em.close();
         }
     }
-    
-    public int RegistrarPersona(Persona personaAgregar){
+
+    public int RegistrarPersona(Persona personaAgregar) {
         // Inicia la sesion de trabajo con la base de datos
         EntityManager em = persistenceUtil.getEntityManagerFactory().createEntityManager();
         try {
             Long count = em.createQuery(
-                "SELECT COUNT(p) FROM Persona p WHERE p.cedula = :ced", Long.class)
-            .setParameter("ced", personaAgregar.getCedula())
-            .getSingleResult();
-            
+                    "SELECT COUNT(c) FROM Cliente c WHERE c.cedula = :ced", Long.class)
+                    .setParameter("ced", personaAgregar.getCedula())
+                    .getSingleResult();
+
             // Existe la persona, porque el contador dio un resultado
-            if(count > 0){
+            if (count > 0) {
                 return 0;
             }
-            
+
             // Se inicia la transicion
             em.getTransaction().begin();
             // Se inserta la persona
@@ -200,22 +206,22 @@ public class PersonaDAO {
             // Confirmar y guardar los cambios
             em.getTransaction().commit();
             return 1;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             // Revertir todo, no guardar nada
-            if(em.getTransaction().isActive()){
-               em.getTransaction().rollback(); 
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
             }
             return 2;
-            
-        }finally{
+
+        } finally {
             em.close();
         }
     }
-    
-    public Persona BuscarPersonaPorCedula(String cedula){
+
+    public Persona BuscarPersonaPorCedula(String cedula) {
         EntityManager em = persistenceUtil.getEntityManagerFactory().createEntityManager();
         try {
-            return em.createQuery("SELECT p FROM Persona p WHERE p.cedula = :ced", Persona.class)
+            return em.createQuery("SELECT c FROM Cliente c WHERE c.cedula = :ced", Persona.class)
                     .setParameter("ced", cedula)
                     .getSingleResult();
         } catch (NoResultException ex) {
@@ -224,5 +230,26 @@ public class PersonaDAO {
             em.close();
         }
     }
-    
+
+    public List<Persona> ListarPersonasRegistradas() {
+        // Inicia la sesion de trabajo con la base de datos
+        EntityManager em = persistenceUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            // Devuelve el listado de la busqueda
+            return em.createQuery("SELECT c FROM Cliente c", Persona.class).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Empleado> obtenerEmpleados() {
+        EntityManager em = persistenceUtil.getEntityManagerFactory().createEntityManager();
+        try {
+            return em.createQuery("SELECT e FROM Empleado e", Empleado.class)
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
 }

@@ -123,6 +123,12 @@ public class Factura_frm extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Precio:");
 
+        txt_cantidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cantidadKeyTyped(evt);
+            }
+        });
+
         txt_precio.setEditable(false);
 
         butt_agregarDetalle.setText("Agregar");
@@ -414,6 +420,13 @@ public class Factura_frm extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txt_cedulaKeyTyped
+
+    private void txt_cantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cantidadKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txt_cantidadKeyTyped
 
     private void EliminarDetalleFactura() {
         int filaSeleccionada = tbl_detalle.getSelectedRow();
