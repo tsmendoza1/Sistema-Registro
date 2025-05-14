@@ -8,6 +8,7 @@ ec\edu\tsmendoza\sistemaregistro\negocio\ProductoServicio.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Factura_frm$9.class
 modelo\Fidelidad.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\SistemaRegistro$2.class
+ec\edu\tsmendoza\sistemaregistro\presentacion\Empleado_frm$4.class
 modelo\Factura.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Persona_frm$8.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Factura_frm$1.class
@@ -26,6 +27,7 @@ ec\edu\tsmendoza\sistemaregistro\presentacion\Factura_frm$2.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Persona_frm$13.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\ProductoMain.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Factura_frm$5.class
+ec\edu\tsmendoza\sistemaregistro\presentacion\Empleado_frm$3.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Persona_frm$7.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Empleado_frm.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\SistemaRegistro$4.class
@@ -41,7 +43,9 @@ ec\edu\tsmendoza\sistemaregistro\presentacion\Persona_frm$12.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Factura_frm$4.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Factura_frm$6.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\SistemaRegistro.class
+ec\edu\tsmendoza\sistemaregistro\presentacion\Empleado_frm$2.class
 ec\edu\tsmendoza\sistemaregistro\negocio\PersonaServicio.class
+ec\edu\tsmendoza\sistemaregistro\presentacion\Empleado_frm$5.class
 ec\edu\tsmendoza\sistemaregistro\datos\ConexionDB.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Factura_frm.class
 ec\edu\tsmendoza\sistemaregistro\presentacion\Persona_frm$1.class

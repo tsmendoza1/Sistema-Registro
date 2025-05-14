@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
+import modelo.Cliente;
 import modelo.Empleado;
 
 /**
@@ -75,12 +76,24 @@ public class PersonaServicio {
         return personaDao.ActualizarPersona(id, persona);
     }
 
+    public boolean ActualizarEmpleado(int id, Empleado empleado) {
+        return personaDao.ActualizarEmpleado(id, empleado);
+    }
+
     public List<Persona> ListarPersonas() {
         return personaDao.ListarPersonasRegistradas();
     }
 
     public List<Empleado> ObtenerEmpleados() {
-        return personaDao.obtenerEmpleados(); 
+        return personaDao.obtenerEmpleados();
+    }
+
+    public List<Cliente> obtenerClientes() {
+        return personaDao.obtenerTodosLosClientes();
+    }
+
+    public boolean actualizarCliente(int id, Cliente cliente) {
+        return personaDao.ActualizarCliente(id, cliente);
     }
 
 }

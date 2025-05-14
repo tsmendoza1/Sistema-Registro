@@ -18,6 +18,7 @@ public class SistemaRegistro extends javax.swing.JFrame {
     public SistemaRegistro() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setTitle("Sistema de Facturacion - KIA Motors");
     }
 
     /**
@@ -55,7 +56,7 @@ public class SistemaRegistro extends javax.swing.JFrame {
         fileMenu.add(openMenuItem);
 
         saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Producto");
+        saveMenuItem.setText("Vehiculo");
         saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveMenuItemActionPerformed(evt);
@@ -92,7 +93,7 @@ public class SistemaRegistro extends javax.swing.JFrame {
         });
         butt_crearFactura.add(jMenuItem1);
 
-        jMenuItem2.setText("Facturas Creadas");
+        jMenuItem2.setText("Ventas");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);

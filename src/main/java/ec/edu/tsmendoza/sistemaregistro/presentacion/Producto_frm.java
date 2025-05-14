@@ -37,7 +37,7 @@ public class Producto_frm extends javax.swing.JInternalFrame {
         listadoProductos = listaProductos;
         modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
-        modelo.addColumn("Nombre");
+        modelo.addColumn("Modelo");
         modelo.addColumn("Precio");
 
         for (Producto prod : listaProductos) {
@@ -77,7 +77,7 @@ public class Producto_frm extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Codigo:");
 
-        jLabel2.setText("Nombre:");
+        jLabel2.setText("Modelo:");
 
         jLabel3.setText("Precio:");
 
@@ -128,17 +128,11 @@ public class Producto_frm extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(24, 24, 24)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(30, 30, 30)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_codigo)
                             .addComponent(txt_nombre)

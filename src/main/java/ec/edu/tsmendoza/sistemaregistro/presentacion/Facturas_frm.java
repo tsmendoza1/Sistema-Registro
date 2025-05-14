@@ -37,7 +37,7 @@ public class Facturas_frm extends javax.swing.JInternalFrame {
         modelo.addColumn("Apellido");   //2
         modelo.addColumn("Correo");     //3
         modelo.addColumn("Edad");       //4
-        modelo.addColumn("Producto");   //5
+        modelo.addColumn("Modelo");   //5
         modelo.addColumn("Precio U");   //6
         modelo.addColumn("Cantidad");   //7
 
@@ -76,7 +76,7 @@ public class Facturas_frm extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Facturas");
+        setTitle("Ventas");
 
         tbl_facturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

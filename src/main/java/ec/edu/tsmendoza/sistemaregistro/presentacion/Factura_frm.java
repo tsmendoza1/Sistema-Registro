@@ -233,7 +233,7 @@ public class Factura_frm extends javax.swing.JInternalFrame {
 
         txt_total.setEditable(false);
 
-        jLabel10.setText("Nombre:");
+        jLabel10.setText("Modelo:");
 
         txt_NombreProducto.setEditable(false);
 
@@ -500,10 +500,10 @@ public class Factura_frm extends javax.swing.JInternalFrame {
             // Se reinicia y configura el modelo de la tabla.
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.addColumn("Codigo");
-            modelo.addColumn("Producto");
+            modelo.addColumn("Modelo");
             modelo.addColumn("Precio Unit");
             modelo.addColumn("Cantidad");
-            modelo.addColumn("Total");
+            modelo.addColumn("Total"); 
 
             // Se itera sobre la lista para agregar cada detalle.
             for (DetalleFactura detalle : detallesFactura) {
